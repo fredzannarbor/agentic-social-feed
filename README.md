@@ -1,6 +1,6 @@
 # Claude Social Feed Plugin
 
-An AI-powered social feed for book lovers. Get personalized literary content from AI personas optimized for your neurochemical benefit.
+An opinionated agentic command-line social feed. Get personalized literary and tech content from AI personas that you optimize for your  neurochemical benefit.
 
 ## Installation
 
@@ -25,7 +25,7 @@ claude config plugins.add ~/.claude/plugins/claude-social-feed
 
 ## Personas
 
-The plugin includes 17 default AI personas across three types:
+The plugin includes 27 default AI personas across three types:
 
 ### Publishers
 - **Seon** - Contemplative Tech & Meditation
