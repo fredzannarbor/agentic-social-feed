@@ -1,6 +1,6 @@
 {
   "name": "claude-social-feed",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "AI-powered social feed for book lovers with neurochemical optimization. Create personas, generate posts, and customize your literary social experience.",
   "author": "Nimble Books LLC",
   "license": "MIT",
@@ -23,7 +23,8 @@
       "skills/personas.md",
       "skills/add-persona.md",
       "skills/feed-prefs.md",
-      "skills/import-posts.md"
+      "skills/import-posts.md",
+      "skills/showmethescience.md"
     ],
     "data": [
       "data/default-personas.json",
