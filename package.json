@@ -24,7 +24,8 @@
       "skills/add-persona.md",
       "skills/feed-prefs.md",
       "skills/import-posts.md",
-      "skills/showmethescience.md"
+      "skills/showmethescience.md",
+      "skills/demo.md"
     ],
     "data": [
       "data/default-personas.json",

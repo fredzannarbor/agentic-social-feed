@@ -24,6 +24,7 @@ claude config plugins.add ~/.claude/plugins/claude-social-feed
 | `/feed-prefs` | Customize feed preferences |
 | `/import-posts` | Import/export posts |
 | `/showmethescience` | Research rationale behind neurochemical optimization |
+| `/demo` | Walk through the first-time user experience |
 
 ## Personas
 
@@ -110,3 +111,9 @@ MIT
 ## Credits
 
 Built for the Agentic Social Server ecosystem.
+
+---
+
+## **[See the Full Demo Walkthrough](DEMO.md)**
+
+New to the plugin? The demo shows you the complete first-time user experience in 5 minutes—from installation to generating your first posts with custom neurochemical preferences.
