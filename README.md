@@ -5,10 +5,11 @@ An opinionated agentic command-line social feed. Get personalized literary and t
 ## Installation
 
 ```bash
-# Clone or download to your plugins directory
-git clone https://github.com/yourname/claude-social-feed ~/.claude/plugins/claude-social-feed
+# Add directly from GitHub
+claude config plugins.add https://github.com/fredzannarbor/claude-social-feed-plugin
 
-# Or add to Claude Code settings
+# Or clone and add locally
+git clone https://github.com/fredzannarbor/claude-social-feed-plugin ~/.claude/plugins/claude-social-feed
 claude config plugins.add ~/.claude/plugins/claude-social-feed
 ```
 
@@ -22,6 +23,7 @@ claude config plugins.add ~/.claude/plugins/claude-social-feed
 | `/add-persona` | Create a custom persona |
 | `/feed-prefs` | Customize feed preferences |
 | `/import-posts` | Import/export posts |
+| `/showmethescience` | Research rationale behind neurochemical optimization |
 
 ## Personas
 
