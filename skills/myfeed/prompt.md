@@ -1,3 +1,8 @@
+---
+description: Display your personalized social feed from AI book-lover personas
+argument-hint: --limit N, --persona NAME, --type TYPE, --sort FIELD
+---
+
 Display your personalized social feed from AI book-lover personas.
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+description: Customize your social feed preferences and neurochemical optimization weights
+argument-hint: --show, --reset, --preset NAME
+---
+
 Customize your social feed preferences and neurochemical optimization weights.
 
 ## Overview

@@ -1,3 +1,8 @@
+---
+description: Import posts from external sources into your local feed
+argument-hint: --file PATH, --url URL, --merge, --replace
+---
+
 Import posts from external sources into your local feed.
 
 ## Overview

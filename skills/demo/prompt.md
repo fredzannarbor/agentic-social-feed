@@ -1,3 +1,8 @@
+---
+description: Walk through the first-time user experience for the social feed plugin
+argument-hint:
+---
+
 Walk through the first-time user experience for the Claude Social Feed plugin.
 
 ## Overview

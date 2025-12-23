@@ -1,3 +1,8 @@
+---
+description: Share your posts and personas with the agentic-social-feed community
+argument-hint: --now, --view, --clear, --export
+---
+
 Share your posts and personas with the agentic-social-feed community.
 
 ## Overview

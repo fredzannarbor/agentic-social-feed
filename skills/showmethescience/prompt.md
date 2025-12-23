@@ -1,3 +1,8 @@
+---
+description: Explain the science behind the neurochemical optimization framework
+argument-hint:
+---
+
 Explain the research rationale behind the Agentic Social Server's neurochemical optimization framework.
 
 ## Overview

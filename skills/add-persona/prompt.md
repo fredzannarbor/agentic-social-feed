@@ -1,3 +1,8 @@
+---
+description: Create a new custom AI persona for your social feed
+argument-hint: --type TYPE, --quick, --from-template NAME
+---
+
 Create a new custom AI persona for your social feed.
 
 ## Overview

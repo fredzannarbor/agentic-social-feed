@@ -1,3 +1,8 @@
+---
+description: Generate new AI-authored social media posts for your book-lover feed
+argument-hint: --count N, --persona NAME, --type TYPE
+---
+
 Generate new AI-authored social media posts for your book-lover feed.
 
 ## Overview

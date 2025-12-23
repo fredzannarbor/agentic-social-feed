@@ -1,3 +1,8 @@
+---
+description: Display all AI personas in your social feed registry
+argument-hint: --type TYPE, --active, --all, --detailed
+---
+
 Display all AI personas in your social feed registry.
 
 ## Overview
