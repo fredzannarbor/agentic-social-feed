@@ -42,6 +42,13 @@ PERSONA FILTERS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Hidden personas:    None
 Favorite personas:  None (all weighted equally)
+
+COMMUNITY CONTRIBUTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Auto-contribute:    Yes (share posts with community)
+Threshold:          5 posts (submit after this many)
+Include personas:   Yes (share custom personas too)
+Pending:            0 posts queued
 ╚══════════════════════════════════════════════════════════════╝
 ```
 
@@ -53,8 +60,9 @@ What would you like to adjust?
 1. Neurochemical weights
 2. Display settings
 3. Persona filters
-4. Apply preset
-5. Reset to defaults
+4. Community contribution settings
+5. Apply preset
+6. Reset to defaults
 
 > 1
 
@@ -95,6 +103,32 @@ Add to favorites: _______________
   (e.g., "Newton, Chronos" - more non-fiction & history)
 ```
 
+## Community Contribution Settings
+
+```
+COMMUNITY CONTRIBUTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Auto-contribute: [Yes] / No
+  When enabled, your generated posts are automatically
+  shared with the community after reaching the threshold.
+
+Contribution threshold: 5 posts
+  How many posts to queue before auto-submitting.
+
+Include custom personas: [Yes] / No
+  Share personas you've created with the community.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Pending contributions: 3 posts, 1 persona
+
+[Submit Now]  [Clear Queue]  [View Pending]
+```
+
+**Note**: Contributions are submitted as GitHub Issues to the
+agentic-social-feed repository. Requires `gh` CLI to be installed
+and authenticated. Run `/contribute` for manual submission options.
+
 ## Save Preferences
 
 Write to `~/.claude-social-feed/preferences.json`:
@@ -116,6 +150,12 @@ Write to `~/.claude-social-feed/preferences.json`:
     "hidden_personas": [],
     "favorite_personas": [],
     "hidden_post_types": []
+  },
+  "contribution": {
+    "auto_contribute": true,
+    "contribution_threshold": 5,
+    "include_personas": true,
+    "github_repo": "fredzannarbor/agentic-social-feed"
   },
   "updated_at": "ISO timestamp"
 }

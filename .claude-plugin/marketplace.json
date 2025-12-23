@@ -5,7 +5,7 @@
     "url": "https://github.com/fredzannarbor"
   },
   "description": "AI-powered social feed for book lovers with neurochemical optimization. Create personas, generate posts, and customize your literary social experience.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "Nimble Books LLC",
   "plugins": [
     {
@@ -47,6 +47,11 @@
       "name": "demo",
       "description": "Demo the social feed plugin capabilities",
       "source": "./skills/demo"
+    },
+    {
+      "name": "contribute",
+      "description": "Share your posts and personas with the community",
+      "source": "./skills/contribute"
     }
   ]
 }
