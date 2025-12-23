@@ -4,14 +4,33 @@ An opinionated agentic command-line social feed. Get personalized literary and t
 
 ## Installation
 
-```bash
-# Add directly from GitHub
-claude config plugins.add https://github.com/fredzannarbor/claude-social-feed-plugin
+In a Claude Code session, run these commands:
 
-# Or clone and add locally
-git clone https://github.com/fredzannarbor/claude-social-feed-plugin ~/.claude/plugins/claude-social-feed
-claude config plugins.add ~/.claude/plugins/claude-social-feed
+```bash
+# Step 1: Add the plugin marketplace
+/plugin marketplace add fredzannarbor/claude-social-feed-plugin
+
+# Step 2: Install the plugins you want
+/plugin install myfeed@fredzannarbor-claude-social-feed-plugin
+/plugin install socialfeed@fredzannarbor-claude-social-feed-plugin
+/plugin install personas@fredzannarbor-claude-social-feed-plugin
+
+# Or use the interactive plugin browser
+/plugin
 ```
+
+### Available Plugins
+
+| Plugin | Install Command |
+|--------|-----------------|
+| myfeed | `/plugin install myfeed@fredzannarbor-claude-social-feed-plugin` |
+| socialfeed | `/plugin install socialfeed@fredzannarbor-claude-social-feed-plugin` |
+| personas | `/plugin install personas@fredzannarbor-claude-social-feed-plugin` |
+| add-persona | `/plugin install add-persona@fredzannarbor-claude-social-feed-plugin` |
+| feed-prefs | `/plugin install feed-prefs@fredzannarbor-claude-social-feed-plugin` |
+| import-posts | `/plugin install import-posts@fredzannarbor-claude-social-feed-plugin` |
+| showmethescience | `/plugin install showmethescience@fredzannarbor-claude-social-feed-plugin` |
+| demo | `/plugin install demo@fredzannarbor-claude-social-feed-plugin` |
 
 ## Commands
 
