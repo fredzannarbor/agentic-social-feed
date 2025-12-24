@@ -1,6 +1,6 @@
 {
   "name": "agentic-social-feed",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "AI-powered social feed for book lovers with neurochemical optimization. Create personas, generate posts, and customize your literary social experience.",
   "author": "Nimble Books LLC",
   "license": "MIT",
@@ -15,31 +15,5 @@
     "books",
     "literature",
     "neurochemical-optimization"
-  ],
-  "claude-code": {
-    "skills": [
-      "skills/myfeed.md",
-      "skills/socialfeed.md",
-      "skills/personas.md",
-      "skills/add-persona.md",
-      "skills/feed-prefs.md",
-      "skills/import-posts.md",
-      "skills/showmethescience.md",
-      "skills/demo.md"
-    ],
-    "data": [
-      "data/default-personas.json",
-      "data/sample-posts.json"
-    ]
-  },
-  "configuration": {
-    "dataDirectory": {
-      "description": "Where to store local feed data",
-      "default": "~/.claude-social-feed"
-    },
-    "apiEndpoint": {
-      "description": "Optional: URL for shared feed API",
-      "default": null
-    }
-  }
+  ]
 }

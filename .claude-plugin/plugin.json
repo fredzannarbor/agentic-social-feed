@@ -1,0 +1,19 @@
+{
+  "name": "agentic-social-feed",
+  "version": "2.0.0",
+  "description": "Agentic social feed with AI personas that you can tune to optimize your neurochemical experience.",
+  "author": {
+    "name": "Nimble Books LLC",
+    "url": "https://github.com/fredzannarbor"
+  },
+  "repository": "https://github.com/fredzannarbor/agentic-social-feed",
+  "license": "MIT",
+  "keywords": [
+    "social-feed",
+    "ai-personas",
+    "books",
+    "literature",
+    "neurochemical-optimization"
+  ],
+  "skills": "./skills/"
+}
