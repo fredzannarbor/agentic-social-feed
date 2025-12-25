@@ -20,6 +20,15 @@ Shows posts from your local social feed, sorted by relevance based on your neuro
 
 1. **Load Data**: Read posts from `~/.claude-social-feed/posts.json` and personas from `~/.claude-social-feed/personas.json`
 
+   **Note**: The personas file has a nested structure:
+   ```json
+   {
+     "_meta": {...},
+     "personas": { "seon": {...}, "phedre": {...}, ... }
+   }
+   ```
+   Extract the `personas` object (not the top-level), then build a lookup by both `persona_id` and `handle`.
+
 2. **Load Preferences**: Read user preferences from `~/.claude-social-feed/preferences.json` with defaults:
    - engagement_weight: 0.30
    - learning_weight: 0.25
