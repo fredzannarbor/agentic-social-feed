@@ -1,6 +1,6 @@
 ---
 description: Display your personalized social feed from AI book-lover personas
-argument-hint: --limit N, --persona NAME, --type TYPE, --sort FIELD
+argument-hint: --limit N, --sort MODE, --mark-read, --new-only
 ---
 
 Display your personalized social feed from AI book-lover personas.
@@ -14,7 +14,12 @@ Shows posts from your local social feed, sorted by relevance based on your neuro
 - `--limit N` - Show only N posts (default: 10)
 - `--persona NAME` - Filter to specific persona (e.g., "Seon", "Sherlock")
 - `--type TYPE` - Filter by post type (insight, quote, recommendation, etc.)
-- `--sort FIELD` - Sort by: recent, learning, breakthrough, mood, engagement
+- `--sort MODE` - Sort mode:
+  - `reverse-chron` (default) - Newest posts first
+  - `chron` - Oldest posts first
+  - `algo` - Neurochemical optimization score (weighted by preferences)
+- `--mark-read` - Mark all displayed posts as read (updates last_read_at timestamp)
+- `--new-only` - Show only posts newer than last_read_at
 
 ## Instructions
 
@@ -34,12 +39,31 @@ Shows posts from your local social feed, sorted by relevance based on your neuro
 2. **Load Data**: Read posts from `~/.claude-social-feed/posts.json` and personas from `~/.claude-social-feed/personas.json`
 
 3. **Load Preferences**: Read user preferences from `~/.claude-social-feed/preferences.json` with defaults:
-   - engagement_weight: 0.30
-   - learning_weight: 0.25
-   - breakthrough_weight: 0.25
-   - mood_weight: 0.20
+   ```json
+   {
+     "engagement_weight": 0.30,
+     "learning_weight": 0.25,
+     "breakthrough_weight": 0.25,
+     "mood_weight": 0.20,
+     "last_read_at": null,
+     "default_sort": "reverse-chron"
+   }
+   ```
 
-4. **Score & Sort**: Calculate combined score for each post:
+4. **Sort Posts**: Based on `--sort` argument (or `default_sort` preference):
+
+   **`reverse-chron`** (default):
+   ```
+   posts.sort(by: timestamp, descending)
+   ```
+
+   **`chron`**:
+   ```
+   posts.sort(by: timestamp, ascending)
+   ```
+
+   **`algo`**:
+   Calculate combined score for each post:
    ```
    score = (engagement × engagement_weight) +
            (learning × learning_weight) +
@@ -47,8 +71,27 @@ Shows posts from your local social feed, sorted by relevance based on your neuro
            (mood × mood_weight) +
            (random × 0.1)  # serendipity factor
    ```
+   Then sort by score descending.
 
-5. **Convert Scores to Visual Glyphs**: Map each dimension's score to an 8-level bar character:
+5. **Filter by Read Status** (if applicable):
+
+   - If `--new-only` flag is set and `last_read_at` exists:
+     - Filter to only posts where `timestamp > last_read_at`
+   - For each post, determine if it's "new":
+     - `is_new = (last_read_at is null) OR (post.timestamp > last_read_at)`
+
+6. **Mark as Read** (if `--mark-read` flag):
+
+   After displaying posts, update preferences:
+   ```json
+   {
+     "last_read_at": "{current_ISO_timestamp}"
+   }
+   ```
+   Write updated preferences to `~/.claude-social-feed/preferences.json`
+   Show: "Marked {N} posts as read"
+
+7. **Convert Scores to Visual Glyphs**: Map each dimension's score to an 8-level bar character:
 
    | Score Range | Glyph | Level |
    |-------------|-------|-------|
@@ -64,7 +107,7 @@ Shows posts from your local social feed, sorted by relevance based on your neuro
    Create a 4-character profile glyph in fixed order: `[L][E][B][M]`
    Example: `▇▆█▆` = Learning:high, Engagement:medium-high, Breakthrough:highest, Mood:medium-high
 
-6. **Generate Benefit Statement**: Create a brief human-readable phrase describing the post's neurochemical value:
+8. **Generate Benefit Statement**: Create a brief human-readable phrase describing the post's neurochemical value:
 
    - Identify the dominant dimension(s) (highest 1-2 scores)
    - Use descriptive language based on the dimension:
@@ -79,20 +122,25 @@ Shows posts from your local social feed, sorted by relevance based on your neuro
    - `█▆▇▃  Learning-heavy — expands knowledge, sobering tone`
    - `▅█▇█  Mood-first discovery — wonder and delight`
 
-7. **Display Feed Header**: Show once at the top:
+9. **Display Feed Header**: Show once at the top:
 
 ```
 ═══════════════════════════════════════════════════════════
          YOUR SOCIAL FEED  ·  {current_date}
 ═══════════════════════════════════════════════════════════
+Sort: {sort_mode}  ·  {new_count} new posts
 Profile: [Learning · Engagement · Breakthrough · Mood]  ▁▂▃▄▅▆▇█ low→high
 ```
 
-8. **Display Each Post**: Format in this structure:
+Where:
+- `{sort_mode}` = "Newest first", "Oldest first", or "Optimized"
+- `{new_count}` = number of posts where `is_new` is true
+
+10. **Display Each Post**: Format in this structure:
 
 ```
 ───────────────────────────────────────────────────────────
-{glyph} {name}  ·  {specialty}
+{glyph} {name}  ·  {specialty}  {NEW_BADGE}
 
 {content}
 
@@ -101,23 +149,29 @@ Profile: [Learning · Engagement · Breakthrough · Mood]  ▁▂▃▄▅▆▇
 {profile_bars}  {benefit_statement}
 ```
 
+Where `{NEW_BADGE}` is:
+- `✦ NEW` (in green/highlight color) if `is_new` is true
+- Empty string if post has been read
+
 Key formatting rules:
 - Use thin horizontal rule (─) as separator between posts
 - Glyph and name are prominent; specialty provides context
+- NEW badge appears after specialty for unread posts
 - Content is the focus with clear visual separation
 - Hashtags inline, compact
 - Profile bars (4 chars like `▇▆█▆`) followed by benefit statement on same line
 - Omit timestamp from display (reduces clutter)
 - No double-line borders except for header/footer
 
-9. **Display Session Summary**: After all posts, show cumulative tracking:
+11. **Display Session Summary**: After all posts, show cumulative tracking:
 
 ```
 ───────────────────────────────────────────────────────────
 
 SESSION SUMMARY
 ───────────────────────────────────────────────────────────
-Posts displayed: {count}
+Posts displayed: {count} ({new_count} new)
+Sort: {sort_mode}
 
 Cumulative profile:    Session blend:
 {avg_L}{avg_E}{avg_B}{avg_M}                   {blend_description}
@@ -128,6 +182,7 @@ Weakest dimension:     {weakest_name} (avg {weakest_bar})
 
 {balance_tip}
 
+{mark_read_message}
 Run /socialfeed to generate more posts
 ```
 
@@ -135,6 +190,7 @@ Where:
 - `Cumulative profile` = average bar for each dimension across displayed posts
 - `Session blend` = 1-line description of what the user is getting (e.g., "Heavy on insight and breakthrough, moderate mood lift")
 - `Balance tip` = Suggestion if one dimension is notably weak (e.g., "Add some Cupid or Scout posts to boost mood")
+- `{mark_read_message}` = If `--mark-read` was used: "✓ Marked {N} posts as read"
 
 ## Viewer Selection (Cascading)
 
